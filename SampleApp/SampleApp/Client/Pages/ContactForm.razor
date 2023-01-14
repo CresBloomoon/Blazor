@@ -1,0 +1,78 @@
+﻿@page "/contact"
+@using System.ComponentModel.DataAnnotations;
+
+<h3>お問い合わせフォーム</h3>
+
+<EditForm EditContext="@editContext" OnValidSubmit="@OnValidSubmit">
+	<DataAnnotationsValidator/>
+	@*<ValidationSummary />*@
+
+	<div class="form-group">
+		<label>名前</label>
+		<InputText class="form-control" @bind-Value="@model.Name" />
+		<ValidationMessage For="@(() => model.Name)" />
+	</div>
+
+	<div class="form-group">
+		<label>メールアドレス</label>
+		<InputText class="form-control" @bind-Value="@model.Email" typeof="email" />
+		<ValidationMessage For="@(() => model.Email)" />
+	</div>
+
+	<div class="form-group">
+		<label>内容</label>
+		<InputTextArea class="form-control" @bind-Value="model.Content" />
+		<ValidationMessage For="@(() => model.Content)" />
+	</div>
+
+	<button type="submit" class="btn btn-primary" disabled="@formInvalid">送信</button>
+</EditForm>
+
+<p style="font-size: 20px; margin-top: 20px;">
+	@resultMessage
+</p>
+
+@if (!string.IsNullOrEmpty(resultMessage))
+{
+	<p>名前:@model.Name</p>
+	<p>メールアドレス:@model.Email</p>
+	<p>内容:@model.Content</p>
+}
+@code {
+	private ContactFormModel model = new ContactFormModel();
+	private string resultMessage;
+
+	public class ContactFormModel
+	{
+		[Required(ErrorMessage ="名前は入力必須です")]
+		[MinLength(3, ErrorMessage ="名前は3文字以上入力してください")]
+		[MaxLength(10, ErrorMessage ="名前は10文字以下にしてください")]
+		public string Name { get; set; }
+
+		[Required(ErrorMessage ="メールアドレスは入力必須です")]
+		public string Email { get; set; }
+
+		[Required(ErrorMessage ="内容は入力必須です")]
+		public string Content { get; set; }
+	}
+
+	private void OnValidSubmit()
+	{
+		resultMessage = "お問い合わせありがとうございました";
+	}
+
+	private bool formInvalid = true;
+	private EditContext editContext;
+
+	protected override void OnInitialized()
+	{
+		editContext = new EditContext(model);
+		editContext.OnFieldChanged += OnFieldChanged;
+	}
+
+	private void OnFieldChanged(object sender, FieldChangedEventArgs e)
+	{
+		formInvalid = !editContext.Validate();
+	}
+
+}
