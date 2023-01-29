@@ -29,3 +29,5 @@ builder.Services.AddMsalAuthentication(options =>
 });
 
 await builder.Build().RunAsync();
+
+builder.Services.AddScoped<IUserService, UserService>();
