@@ -1,18 +1,17 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4 auth">
-            <LoginDisplay />
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
+<div>
+	<main>
+		<nav class="navbar navbar-light" style="background-color: #0078D3;">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/" style="color: white;">ECサイト</a>
+				<form class="d-flex gap-2">
+					<LoginDisplay/>
+				</form>
+			</div>
+		</nav>
+		<article class="content px-4">
+			@Body
+		</article>
+	</main>
 </div>
