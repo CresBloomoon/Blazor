@@ -1,0 +1,13 @@
+﻿@page "/"
+@using cals_blazor.Components
+
+<Calculator ChangeCalsResult="OnChangeCalcResult" />
+<br />
+計算結果：@ReceivedResult
+
+@code {
+    private int ReceivedResult = 0;
+    private void OnChangeCalcResult(int result){
+        this.ReceivedResult = result;
+    }
+}

@@ -1,0 +1,19 @@
+﻿@page "/"
+@inherits IndexBase
+
+<PageTitle>Index</PageTitle>
+
+<h1>@Message</h1>
+<br />
+CurrentDateTime:@CurrentDateTime
+<br />
+<input type="button" @onclick="GetDateTime" value="get date and time" />
+
+@* @code{
+    private string Message = "Hello Blazor";
+    private string CurrentDateTime = "???";
+
+    private void GetDateTime(){
+        CurrentDateTime = DateTime.Now.ToString("yyyy/MM/dd H:m:s");
+    }
+} *@

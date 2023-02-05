@@ -1,0 +1,14 @@
+@page "/Todos/list"
+@inherits todo_blazor.Pages.TodoListBase
+@using todo_blazor.Models
+
+@foreach (Todo todo in this.Todos)
+{
+    @if (todo.IsCompleted){
+        <s>@todo.Contents</s>
+    }
+    else{
+        @todo.Contents
+    }
+    <br />
+}
