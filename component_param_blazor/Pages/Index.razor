@@ -1,0 +1,20 @@
+﻿@page "/"
+@using component_param_blazor.Components
+@using component_param_blazor.Models
+
+<PersonViewer1
+    ID="@CurrentPerson.ID"
+    FirstName="@CurrentPerson.FirstName"
+    LastName="@CurrentPerson.LastName" />
+
+@code{
+    private Person CurrentPerson{get;set;}
+        protected override void OnInitialized()
+        {
+            this.CurrentPerson = new Person(){
+                ID = 0,
+                FirstName = "taro",
+                LastName = "tanaka"
+            };
+        }
+}

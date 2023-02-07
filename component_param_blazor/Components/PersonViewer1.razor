@@ -1,0 +1,27 @@
+@using component_param_blazor.Models
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">ID:</div>
+        <div class="col-sm">@ID</div>
+    </div>
+    <div class="row">
+        <div class="col-sm">FirstName:</div>
+        <div class="col-sm">@FirstName</div>
+    </div>
+    <div class="row">
+        <div class="col-sm">LastName:</div>
+        <div class="col-sm">@LastName</div>
+    </div>
+</div>
+
+@code{
+    [Parameter]
+    public int ID{get;set;}
+    
+    [Parameter]
+    public string FirstName{get;set;}
+
+    [Parameter]
+    public string LastName{get;set;}
+}
