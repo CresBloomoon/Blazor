@@ -2,10 +2,7 @@
 @using component_param_blazor.Components
 @using component_param_blazor.Models
 
-<PersonViewer1
-    ID="@CurrentPerson.ID"
-    FirstName="@CurrentPerson.FirstName"
-    LastName="@CurrentPerson.LastName" />
+<PersonViewer2 Person="@CurrentPerson" />
 
 @code{
     private Person CurrentPerson{get;set;}
@@ -18,3 +15,4 @@
             };
         }
 }
+
